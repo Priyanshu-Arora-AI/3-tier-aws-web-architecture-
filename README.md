@@ -16,7 +16,7 @@ In this architecture, a public-facing Application Load Balancer forwards client 
 
 
 
-#setup guides
+## setup guides
 1. create vpc
 2. create 6 subnet in vpc [ public - 2  for instance A & B] [ private - 2 for instance C & D ] [[ private - 2 for RDS ]
 3. create internet gateway
