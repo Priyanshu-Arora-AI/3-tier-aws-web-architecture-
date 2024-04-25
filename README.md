@@ -17,20 +17,20 @@ In this architecture, a public-facing Application Load Balancer forwards client 
 
 
 #setup guides
-### --> 1. create vpc
-# --> 2. create 6 subnet in vpc [ public - 2  for instance A & B] [ private - 2 for instance C & D ] [[ private - 2 for RDS ]
-# --> 3. create internet gateway
-# --> 4. connect internet gateway to vpc , 
-# --> 5. create route table and set route to igw , associate public subnet [for instance a and b]
-# --> 6. create nat gateway , allocate public ip , lauch in public subnet 
-# --> 7. create route table and set route to netgateway , associate private subnet subnet [for instance c and d]
-# --> 8. create instance a and b in public subnet [each in one means instance a in public subnet 1 and b in public subnet 2 ]
-# --> 9. run setup command in both instance that are mention below   
-# --> 10. create load balancer type internet and route taffic to public instance [ l.b listning port 80] [target port 80 ]
-# --> 11. create instance c and d in private  subnet [each in one means instance a in private subnet 1 and b in private subnet 2 ]
-# --> 12. run setup command in both instance that are mention below
-# --> 13. create load balancer type internal facing and route taffic to private instance [ l.b listning port 80] [target port 4000 ]
-# --> 14. create database in private subnet and create read replica 
+1. create vpc
+2. create 6 subnet in vpc [ public - 2  for instance A & B] [ private - 2 for instance C & D ] [[ private - 2 for RDS ]
+3. create internet gateway
+4. connect internet gateway to vpc , 
+5. create route table and set route to igw , associate public subnet [for instance a and b]
+6. create nat gateway , allocate public ip , lauch in public subnet 
+7. create route table and set route to netgateway , associate private subnet subnet [for instance c and d]
+8. create instance a and b in public subnet [each in one means instance a in public subnet 1 and b in public subnet 2 ]
+9. run setup command in both instance that are mention below   
+10. create load balancer type internet and route taffic to public instance [ l.b listning port 80] [target port 80 ]
+11. create instance c and d in private  subnet [each in one means instance a in private subnet 1 and b in private subnet 2 ]
+12. run setup command in both instance that are mention below
+13. create load balancer type internal facing and route taffic to private instance [ l.b listning port 80] [target port 4000 ]
+14. create database in private subnet and create read replica 
 
 
 
