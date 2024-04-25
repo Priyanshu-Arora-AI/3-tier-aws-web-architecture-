@@ -99,7 +99,7 @@ In this architecture, a public-facing Application Load Balancer forwards client 
  
 
 load balancer setup
-{ #### create load balancer internet  {
+ #### create load balancer internet  {
 	 	name assign name to it example -> mylb
 	 	connectivity type internet
 	 	select subnet where lauch load balancer
@@ -108,84 +108,85 @@ load balancer setup
 	 			protocol 80 [webserver port 80 for http and for https 440 ]
 	 			select pvc {myvpc}
 	 			select protocol http
-	# 			register target `								
-	# 				register instance
+	 			register target `								
+	 				register instance
 		
-	# 	select httpd protocol and listning port 80 in which l.b. handle request
-	# 	select security group
-	# 	}
-	# create load balancer internel facing {
-	# 	name assign name example->mypvtlb
-	# 	connectivity internal-facing
-	# 	select subnet where lauch load balancer
-	# 	select target for l.b								
-	# 			select target type - instance
-	# 			protocol  port_number  give port number in which api listning it in my case --> 4000 {node js port}
-	# 			select myvpc
-	# 			select protocol http
-	# 			register target `								
-	# 				register instance
+	 	select httpd protocol and listning port 80 in which l.b. handle request
+		select security group
+	 	}
+	 create load balancer internel facing {
+	 	name assign name example->mypvtlb
+	 	connectivity internal-facing
+	 	select subnet where lauch load balancer
+	 	select target for l.b								
+	 			select target type - instance
+	 			protocol  port_number  give port number in which api listning it in my case --> 4000 {node js port}
+	 			select myvpc
+				select protocol http
+	 			register target `								
+					register instance
 		
-	# 	select httpd protocol and listning port 80 in which l.b. handle request
-	# 	select security group
-	# 	}
-}
+		select httpd protocol and listning port 80 in which l.b. handle request
+		select security group
+	 	}
+
 
 
  
 
-ec2 setup 
+#### ec2 setup {
 
-# 	setup ec2 to your requirement 
-# 	for example :
-# 		in public subnet1
-# 					create instance
-# 						ami aws
-# 						name web tier instance 1
-# 						key select key
-# 						instance type t2.micro
+ 	setup ec2 to your requirement 
+	for example :
+		in public subnet1
+ 					create instance
+ 						ami aws
+						name web tier instance 1
+						key select key
+ 						instance type t2.micro
 
 
-# 					set security group 
+					set security group 
 
-# 					storage 8gib	
-# 					network vpc : myvpc
-# 					ubnet : public subnet1 for ec2
-# 					allocate public ip
+ 					storage 8gib	
+ 					network vpc : myvpc
+ 					ubnet : public subnet1 for ec2
+					allocate public ip
 
-# 		in public subnet2
-# 					create instance
-# 						ami aws
-# 						name web tier instance 2
-# 						key select key
-# 						instance type t2.micro
+ 		in public subnet2
+ 					create instance
+ 						ami aws
+						name web tier instance 2
+						key select key
+						instance type t2.micro
 	
-# 						security group 
-# 							setup security group
-# 						storage 8gib	
-# 						network vpc : myvpc
-# 						subnet : public subnet2 for ec2
-# 						allocate public ip enable
+						security group 
+ 							setup security group
+ 						storage 8gib	
+						network vpc : myvpc
+						subnet : public subnet2 for ec2
+						allocate public ip enable
 	
-# 		ec2 setup in private subnet lauch two instance
+		ec2 setup in private subnet lauch two instance
     
-# 					create instance
-# 						ami aws
-# 						name app tier 1
-# 						key select key
-# 						instance type t2.micro
-# 						security group 
-# 							setup security group
+					create instance
+						ami aws
+						name app tier 1
+						key select key
+						instance type t2.micro
+ 						security group 
+							setup security group
 
-# 					storage 8gib	
-# 					network vpc : myvpc
-# 					subnet : private subnet1 for ec2
-# 					allocate public ip disable  }
-
+					storage 8gib	
+					network vpc : myvpc
+					subnet : private subnet1 for ec2
+					allocate public ip disable  
+}
 	
 
     
-setup command for ec2 public instance
+#### setup command for ec2 public instance
+{
 		web tier
 	
 			sudo -i
@@ -215,17 +216,17 @@ setup command for ec2 public instance
         			try_files $uri /index.html; }
         			systemctl restart nginx
 	
-	
+}	
 
-database setup
-	#   go to aws rds
-	# 	select db
-	# 	database name db1
-	# 	give master username
-	# 	give master password 
+#### database setup {
+		select db 
+	 	database name db1
+	 	give master username
+	 	give master password 
+   }
 	
-lauch ubuntu in aws than connect to it mysql 
-	steps 
+##### lauch ubuntu in aws than connect to it mysql {
+	 steps 
 		ubuntu 	
 			conf same as upper public instance
 		cmd
@@ -244,17 +245,17 @@ lauch ubuntu in aws than connect to it mysql
 				mysql -h database-1.cxiu8ua0yny3.ap-south-1.rds.amazonaws.com -u admin 
                         -p12345678 db
 				to enter into db and run query
+}
 
-
-setup private instance
+#### setup private instance
 {
-now again go to public instance 
+	##### now again go to public instance 
 	copy NEW.pem key to instance
 	chmod 400 key
-
-setup command for private instance
+	
+ 	setup command for private instance
 	through public instance
-ssh ec2-user@ip [of private instance] -i key
+	ssh ec2-user@ip [of private instance] -i key
 		sudo -i
 		yum install git -y
 		git clone https://github.com/Priyanshu-Arora-AI/aws-three-tier-web-architecture
