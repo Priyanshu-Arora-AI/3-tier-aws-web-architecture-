@@ -38,75 +38,76 @@ In this architecture, a public-facing Application Load Balancer forwards client 
 
 
 
-steps to implement aws project 3 tier
+### steps to implement aws project 3 tier
 	
 {	
-# 	create vpc 
-# 		1.vpc - name 
-# 		2.label name - myvpc example
-# 		3. ip [give desired cidr]
-# 			example : 10.0.0.0/16
-# 	create subnet
-#    		public subnet
-# 		#create six subnet and assign cidr for subnets
-# 			1. name - public subnet1 for ec2
-# 				ip 10.0.1.0/24 --> subnet cidr example
+ 	#### create vpc 
+ 		1.vpc - name 
+ 		2.label name - myvpc example
+ 		3. ip [give desired cidr]
+ 			example : 10.0.0.0/16
+ 	#### create subnet
+    		public subnet
+ 		 create six subnet and assign cidr for subnets
+ 			
+    			1. name - public subnet1 for ec2
+ 				ip 10.0.1.0/24 --> subnet cidr example
 
-# 			2. name public subnet2 for ec2
-# 				ip 10.0.2.0/24 --> subnet cidr example
+ 			2. name public subnet2 for ec2
+ 				ip 10.0.2.0/24 --> subnet cidr example
 
-# :			3. private subnet1 for ec2 
-# 				ip 10.0.3.0/24  --> subnet cidr example  
+			3. private subnet1 for ec2 
+ 				ip 10.0.3.0/24  --> subnet cidr example  
 
-# 			4. private subnet2 for ec2
-# 				ip 10.0.4.0/24  --> subnet cidr example 
+ 			4. private subnet2 for ec2
+ 				ip 10.0.4.0/24  --> subnet cidr example 
 
-# 			5. private subnet1 for database
-# 				ip 10.0.5.0/24  --> subnet cidr example
+ 			5. private subnet1 for database
+ 				ip 10.0.5.0/24  --> subnet cidr example
 
-# 			6. private subnet2 for database
-# 				ip 10.0.6.0/24  --> subnet cidr example
+			6. private subnet2 for database
+				ip 10.0.6.0/24  --> subnet cidr example
 	
-#     create internet gateay 
-# 			give name to internet gateway example -> myingateway
-# 			attach to myvpc
+####  create internet gateay 
+ 			give name to internet gateway example -> myingateway
+ 			attach to myvpc
     
-#     create route table for internet gateway
-# 			give name to route table1 example -> myroute
-# 			2. attach to myvpc
-# 			3. associate subnet
-# 				public subnet1 for ec2
-# 				public subnet2 for ec2
-# 			4. edit routes
-# 				associtae 0.0.0.0/0 to internet gateway
+  #### create route table for internet gateway
+ 			give name to route table1 example -> myroute
+ 			2. attach to myvpc
+ 			3. associate subnet
+ 				public subnet1 for ec2
+ 				public subnet2 for ec2
+ 			4. edit routes
+ 				associtae 0.0.0.0/0 to internet gateway
 	
 
-# 	create netgateway
-# 		name - give name to netgateway example -> mynetgateway
-# 		attach public subnet1 for ec2 
-# 		connectivity type - public
-# 		allocate public ip
+ ####	create netgateway
+ 		name - give name to netgateway example -> mynetgateway
+ 		attach public subnet1 for ec2 
+ 		connectivity type - public
+ 		allocate public ip
 	
-# 	create route table for netgateway
-# 		name private_subnet
-# 		edit routes
-# 		associtae 0.0.0.0/0 to net gateway
-# 		subnet association 
-# 			private subnet1 for ec2 
-# 			private subnet2 for ec2
+ 	create route table for netgateway
+ 		name private_subnet
+ 		edit routes
+ 		associtae 0.0.0.0/0 to net gateway
+ 		subnet association 
+ 			private subnet1 for ec2 
+ 			private subnet2 for ec2
 }
  
 
 load balancer setup
-{ #create load balancer internet  {
-	# 	name assign name to it example -> mylb
-	# 	connectivity type internet
-	# 	select subnet where lauch load balancer
-	# 	select target for l.b								
-	# 			select target type - instance
-	# 			protocol 80 [webserver port 80 for http and for https 440 ]
-	# 			select pvc {myvpc}
-	# 			select protocol http
+{ #### create load balancer internet  {
+	 	name assign name to it example -> mylb
+	 	connectivity type internet
+	 	select subnet where lauch load balancer
+	 	select target for l.b								
+	 			select target type - instance
+	 			protocol 80 [webserver port 80 for http and for https 440 ]
+	 			select pvc {myvpc}
+	 			select protocol http
 	# 			register target `								
 	# 				register instance
 		
