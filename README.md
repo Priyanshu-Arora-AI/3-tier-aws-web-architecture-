@@ -193,7 +193,8 @@ setup command for ec2 public instance
 			sudo systemctl enable  nginx --now 
 			sudo yum install nodejs npm -y
 			yum install -y git
-			git clone https://github.com/aws-samples/aws-three-tier-web-architecture-workshop.git
+			git clone https://github.com/Priyanshu-Arora-AI/aws-three-tier-web-architecture
+   
 	 		mv aws-three-tier-web-architecture-workshop/application-code/web-tier .
 			cp /root/aws-three-tier-web-architecture-workshop/application-code/nginx.conf /etc/nginx/
 			rm -rf aws-three-tier-web-architecture-workshop
@@ -211,9 +212,7 @@ setup command for ec2 public instance
         			root    /usr/share/nginx/web-tier/build;
         			index index.html index.htm
         			try_files $uri /index.html; }
-        			
-
-			systemctl restart nginx
+        			systemctl restart nginx
 	
 	
 
@@ -257,7 +256,7 @@ setup command for private instance
 ssh ec2-user@ip [of private instance] -i key
 		sudo -i
 		yum install git -y
-		git clone https://github.com/aws-samples/aws-three-tier-web-architecture-workshop.git
+		git clone https://github.com/Priyanshu-Arora-AI/aws-three-tier-web-architecture
 		curl -fsSL https://rpm.nodesource.com/setup_16.x | sudo -E bash -
 		sudo yum install -y nodejs
 		cd aws-three-tier-web-architecture-workshop/
