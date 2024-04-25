@@ -1,3 +1,17 @@
+## Pre-requisites:
+1. An AWS account. If you don’t have an AWS account, follow the instructions [here](https://aws.amazon.com/console/) and
+click on “Create an AWS Account” button in the top right corner to create one.
+1. IDE or text editor of your choice.
+
+## Architecture Overview
+![Architecture Diagram]
+In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a React.js website and redirects our API calls to the application tier’s internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in Node.js. The application tier manipulates data in an Aurora MySQL multi-AZ database and returns it to our web tier. Load balancing, health checks 
+
+
+
+
+
+
 #setup guides
 # --> 1. create vpc
 # --> 2. create 6 subnet in vpc [ public - 2  for instance A & B] [ private - 2 for instance C & D ] [[ private - 2 for RDS ]
