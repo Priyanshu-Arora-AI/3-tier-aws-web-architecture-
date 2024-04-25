@@ -4,7 +4,8 @@ click on “Create an AWS Account” button in the top right corner to create on
 1. IDE or text editor of your choice.
 
 ## Architecture Overview
-(https://github.com/Priyanshu-Arora-AI/3-tier-aws-web-architecture-/blob/main/application-code/web-tier/src/assets/3TierArch.png)
+![Alt text](https://github.com/Priyanshu-Arora-AI/3-tier-aws-web-architecture-/blob/main/application-code/web-tier/src/assets/3TierArch.png)
+
 
 
 ![Architecture Diagram]
